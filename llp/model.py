@@ -1,3 +1,4 @@
+"""Neural network used as instance-level predictor."""
 import torch
 from torch import nn
 
@@ -17,4 +18,5 @@ class MLP(nn.Module):
         self.net = nn.Sequential(*layers)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Return the logits for a batch of instances, shape (n,)."""
         return self.net(x).squeeze(-1)
